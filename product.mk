@@ -1,9 +1,17 @@
 EXTRA_PATH := vendor/extra
 
 # ADB
-ifneq (,$(wildcard $(EXTRA_PATH)/adbkey.pub))
-PRODUCT_ADB_KEYS := $(EXTRA_PATH)/adbkey.pub
-endif
+## ADB Keys
+# Android
+PRODUCT_COPY_FILES += \
+    vendor/extra/adb_keys:root/adb_keys
+# Recovery
+PRODUCT_COPY_FILES += \
+    vendor/extra/adb_keys:recovery/root/adb_keys
+
+## Bash
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    persist.sys.adb.shell=/system_ext/bin/bash
 
 # Bellis
 ifneq (,$(wildcard packages/apps/Bellis))
