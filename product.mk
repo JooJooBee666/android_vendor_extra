@@ -35,3 +35,6 @@ PRODUCT_PACKAGES += iperf3
 
 # tinymix
 PRODUCT_PACKAGES += tinymix
+
+PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
+    root/adb_keys \
