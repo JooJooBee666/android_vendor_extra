@@ -25,6 +25,14 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 # Google Apps
 $(call inherit-product-if-exists, vendor/gapps/arm64/arm64-vendor.mk)
 
+## neofetch
+PRODUCT_COPY_FILES += \
+    vendor/extra/tools/neofetch:$(TARGET_COPY_OUT_SYSTEM_EXT)/bin/neofetch
+
+## Updater
+#PRODUCT_SYSTEM_DEFAULT_PROPERTIES += lineage.updater.uri="https://www.madhopsbrewery.com/lineage/api/v1/{device}/{type}/{incr}"
+#PRODUCT_SYSTEM_DEFAULT_PROPERTIES += lineage.updater.allow_downgrading=true
+
 # ih8sn
 ifneq (,$(wildcard vendor/ih8sn))
 $(call inherit-product-if-exists, $(EXTRA_PATH)/ih8sn/ih8sn.mk)
