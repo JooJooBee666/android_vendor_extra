@@ -22,6 +22,11 @@ endif
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     persist.sys.adb.shell=/system_ext/bin/bash
 
+# sif ADB over Wi-Fi/Ethernet
+ifneq ($(filter %sif,$(TARGET_PRODUCT)),)
+    PRODUCT_SYSTEM_DEFAULT_PROPERTIES += service.adb.tcp.port=5555
+endif
+
 # Google Apps
 $(call inherit-product-if-exists, vendor/gapps/arm64/arm64-vendor.mk)
 
