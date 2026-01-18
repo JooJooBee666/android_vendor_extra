@@ -10,17 +10,13 @@ PRODUCT_COPY_FILES += \
     vendor/extra/adb_keys:recovery/root/adb_keys
 
 ## Bash
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+PRODUCT_SYSTEM_EXT_PROPERTIES += \
     persist.sys.adb.shell=/system_ext/bin/bash
 
 # Bellis
 ifneq (,$(wildcard packages/apps/Bellis))
 PRODUCT_PACKAGES += Bellis
 endif
-
-# Default ADB shell prompt
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    persist.sys.adb.shell=/system_ext/bin/bash
 
 # sif ADB over Wi-Fi/Ethernet
 ifneq ($(filter %sif,$(TARGET_PRODUCT)),)
