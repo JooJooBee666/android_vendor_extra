@@ -23,6 +23,10 @@ ifneq ($(filter %sif,$(TARGET_PRODUCT)),)
     PRODUCT_SYSTEM_DEFAULT_PROPERTIES += service.adb.tcp.port=5555
 endif
 
+# Overlays
+PRODUCT_PACKAGE_OVERLAYS += $(EXTRA_PATH)/overlay-$(subst lineage_,,$(TARGET_PRODUCT))
+PRODUCT_PACKAGE_OVERLAYS += $(EXTRA_PATH)/overlay-lineage
+
 # Google Apps
 $(call inherit-product-if-exists, vendor/gapps/arm64/arm64-vendor.mk)
 
@@ -33,6 +37,10 @@ PRODUCT_COPY_FILES += \
 ## Updater
 #PRODUCT_SYSTEM_DEFAULT_PROPERTIES += lineage.updater.uri="https://www.madhopsbrewery.com/lineage/api/v1/{device}/{type}/{incr}"
 #PRODUCT_SYSTEM_DEFAULT_PROPERTIES += lineage.updater.allow_downgrading=true
+
+PRODUCT_PACKAGES += \
+    com.google.android.safetycore.dummy \
+    com.google.android.verifier.dummy
 
 # ih8sn
 ifneq (,$(wildcard vendor/ih8sn))
